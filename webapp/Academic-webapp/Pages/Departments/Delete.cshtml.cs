@@ -21,7 +21,9 @@ public class DeleteModel : PageModel
     [TempData]
     public string? StatusMessage { get; set; }
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public string? ErrorMessage { get; private set; }
+
+    public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = null)
     {
         if (id is null)
         {
@@ -35,6 +37,10 @@ public class DeleteModel : PageModel
         }
 
         Department = department;
+        if (saveChangesError == true)
+        {
+            ErrorMessage = "No se puede eliminar el departamento porque esta referenciado por otros registros.";
+        }
         return Page();
     }
 
@@ -51,10 +57,16 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        _context.Departments.Remove(department);
-        await _context.SaveChangesAsync();
-        StatusMessage = $"Department '{department.DepartmentName}' deleted successfully.";
-
-        return RedirectToPage("Index");
+        try
+        {
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+            StatusMessage = $"Departamento '{department.DepartmentName}' eliminado correctamente.";
+            return RedirectToPage("Index");
+        }
+        catch (DbUpdateException)
+        {
+            return RedirectToPage(new { id, saveChangesError = true });
+        }
     }
 }

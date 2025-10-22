@@ -41,7 +41,7 @@ public class CreateModel : PageModel
         _context.Majors.Add(Major);
         await _context.SaveChangesAsync();
 
-        StatusMessage = $"Major '{Major.MajorName}' created successfully.";
+    StatusMessage = $"Carrera '{Major.MajorName}' creada correctamente.";
         return RedirectToPage("Index");
     }
 

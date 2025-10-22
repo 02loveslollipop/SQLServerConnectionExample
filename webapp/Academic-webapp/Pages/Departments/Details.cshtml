@@ -1,18 +1,18 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Departments.DetailsModel
 @{
-    ViewData["Title"] = "Department Details";
+    ViewData["Title"] = "Detalle de departamento";
 }
 
-<h1 class="display-6">Department Details</h1>
+<h1 class="display-6">Detalle de departamento</h1>
 
 <dl class="row mt-4">
-    <dt class="col-sm-2">Name</dt>
+    <dt class="col-sm-2">Nombre</dt>
     <dd class="col-sm-10">@Model.Department.DepartmentName</dd>
 </dl>
 
 <section class="mt-4">
-    <h5>Majors</h5>
+    <h5>Carreras</h5>
     @if (Model.Department.Majors.Any())
     {
         <ul>
@@ -24,12 +24,12 @@
     }
     else
     {
-        <p class="text-muted">No majors assigned yet.</p>
+        <p class="text-muted">Sin carreras asignadas.</p>
     }
 </section>
 
 <section class="mt-4">
-    <h5>Instructors</h5>
+    <h5>Docentes</h5>
     @if (Model.Department.Instructors.Any())
     {
         <ul>
@@ -41,11 +41,11 @@
     }
     else
     {
-        <p class="text-muted">No instructors assigned yet.</p>
+        <p class="text-muted">Sin docentes asignados.</p>
     }
 </section>
 
 <p class="mt-4">
-    <a asp-page="Edit" asp-route-id="@Model.Department.DepartmentID" class="btn btn-primary">Edit</a>
-    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-page="Edit" asp-route-id="@Model.Department.DepartmentID" class="btn btn-primary">Editar</a>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
 </p>

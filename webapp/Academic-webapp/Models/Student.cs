@@ -9,23 +9,23 @@ public class Student
     [Key]
     public int StudentID { get; set; }
 
-    [Required]
-    [StringLength(50, MinimumLength = 2)]
-    [Display(Name = "First Name")]
+    [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+    [StringLength(50, MinimumLength = 2, ErrorMessage = "{0} debe tener entre {2} y {1} caracteres.")]
+    [Display(Name = "Nombre")]
     public string FirstName { get; set; } = string.Empty;
 
-    [Required]
-    [StringLength(50, MinimumLength = 2)]
-    [Display(Name = "Last Name")]
+    [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+    [StringLength(50, MinimumLength = 2, ErrorMessage = "{0} debe tener entre {2} y {1} caracteres.")]
+    [Display(Name = "Apellido")]
     public string LastName { get; set; } = string.Empty;
 
-    [Display(Name = "Major")]
-    [Range(1, int.MaxValue, ErrorMessage = "Select a major.")]
+    [Display(Name = "Carrera")]
+    [Range(1, int.MaxValue, ErrorMessage = "Seleccione una carrera.")]
     public int MajorID { get; set; }
 
     public Major? Major { get; set; }
 
-    [Display(Name = "Full Name")]
+    [Display(Name = "Nombre completo")]
     public string FullName => $"{FirstName} {LastName}";
 
     public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();

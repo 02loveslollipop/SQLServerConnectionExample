@@ -34,7 +34,7 @@ public class CreateModel : PageModel
         _context.Departments.Add(Department);
         await _context.SaveChangesAsync();
 
-        StatusMessage = $"Department '{Department.DepartmentName}' created successfully.";
+    StatusMessage = $"Departamento '{Department.DepartmentName}' creado correctamente.";
         return RedirectToPage("Index");
     }
 }

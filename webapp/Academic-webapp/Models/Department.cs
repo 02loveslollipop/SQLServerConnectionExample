@@ -9,9 +9,9 @@ public class Department
     [Key]
     public int DepartmentID { get; set; }
 
-    [Required]
-    [StringLength(100, MinimumLength = 2)]
-    [Display(Name = "Department Name")]
+    [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "{0} debe tener entre {2} y {1} caracteres.")]
+    [Display(Name = "Nombre del departamento")]
     public string DepartmentName { get; set; } = string.Empty;
 
     public ICollection<Major> Majors { get; set; } = new List<Major>();

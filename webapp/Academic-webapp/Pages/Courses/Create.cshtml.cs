@@ -41,7 +41,7 @@ public class CreateModel : PageModel
         _context.Courses.Add(Course);
         await _context.SaveChangesAsync();
 
-        StatusMessage = $"Course '{Course.CourseName}' created successfully.";
+    StatusMessage = $"Curso '{Course.CourseName}' creado correctamente.";
         return RedirectToPage("Index");
     }
 

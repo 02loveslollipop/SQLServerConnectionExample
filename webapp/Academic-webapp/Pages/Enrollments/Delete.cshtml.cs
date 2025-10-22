@@ -59,7 +59,7 @@ public class DeleteModel : PageModel
 
         _context.Enrollments.Remove(enrollment);
         await _context.SaveChangesAsync();
-        StatusMessage = "Enrollment deleted successfully.";
+    StatusMessage = "Inscripcion eliminada correctamente.";
 
         return RedirectToPage("Index");
     }

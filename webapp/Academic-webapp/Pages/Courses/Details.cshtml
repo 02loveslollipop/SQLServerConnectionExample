@@ -1,29 +1,29 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Courses.DetailsModel
 @{
-    ViewData["Title"] = "Course Details";
+    ViewData["Title"] = "Detalle de curso";
 }
 
-<h1 class="display-6">Course Details</h1>
+<h1 class="display-6">Detalle de curso</h1>
 
 <dl class="row mt-4">
-    <dt class="col-sm-2">Course</dt>
+    <dt class="col-sm-2">Curso</dt>
     <dd class="col-sm-10">@Model.Course.CourseName</dd>
-    <dt class="col-sm-2">Credits</dt>
+    <dt class="col-sm-2">Créditos</dt>
     <dd class="col-sm-10">@Model.Course.Credits</dd>
-    <dt class="col-sm-2">Instructor</dt>
+    <dt class="col-sm-2">Docente</dt>
     <dd class="col-sm-10">@Model.Course.Instructor?.InstructorName</dd>
 </dl>
 
 <section class="mt-4">
-    <h5>Enrollments</h5>
+    <h5>Inscripciones</h5>
     @if (Model.Course.Enrollments.Any())
     {
         <table class="table table-sm">
             <thead>
                 <tr>
-                    <th>Student</th>
-                    <th>Date</th>
+                    <th>Estudiante</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,11 +39,11 @@
     }
     else
     {
-        <p class="text-muted">No students enrolled.</p>
+        <p class="text-muted">Sin estudiantes inscritos.</p>
     }
 </section>
 
 <p class="mt-4">
-    <a asp-page="Edit" asp-route-id="@Model.Course.CourseID" class="btn btn-primary">Edit</a>
-    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-page="Edit" asp-route-id="@Model.Course.CourseID" class="btn btn-primary">Editar</a>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
 </p>

@@ -61,12 +61,12 @@ public class DeleteModel : PageModel
         {
             _context.Majors.Remove(major);
             await _context.SaveChangesAsync();
-            StatusMessage = $"Major '{major.MajorName}' deleted successfully.";
+            StatusMessage = $"Carrera '{major.MajorName}' eliminada correctamente.";
             return RedirectToPage("Index");
         }
         catch (DbUpdateException)
         {
-            ErrorMessage = "Unable to delete major because it is referenced by other records.";
+            ErrorMessage = "No se puede eliminar la carrera porque esta referenciada por otros registros.";
             Major = major;
             await _context.Entry(major).Reference(m => m.Department).LoadAsync();
             return Page();

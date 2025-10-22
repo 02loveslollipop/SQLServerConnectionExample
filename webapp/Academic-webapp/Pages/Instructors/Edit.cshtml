@@ -1,10 +1,10 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Instructors.EditModel
 @{
-    ViewData["Title"] = "Edit Instructor";
+    ViewData["Title"] = "Editar docente";
 }
 
-<h1 class="display-6">Edit Instructor</h1>
+<h1 class="display-6">Editar docente</h1>
 
 <form method="post" class="mt-4">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -17,12 +17,12 @@
     <div class="mb-3">
         <label asp-for="Instructor.DepartmentID" class="form-label"></label>
         <select asp-for="Instructor.DepartmentID" asp-items="Model.DepartmentOptions" class="form-select">
-            <option value="">-- Select Department --</option>
+            <option value="">-- Selecciona un departamento --</option>
         </select>
         <span asp-validation-for="Instructor.DepartmentID" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
 </form>
 
 @section Scripts {

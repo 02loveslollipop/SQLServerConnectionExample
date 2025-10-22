@@ -50,7 +50,7 @@ public class EditModel : PageModel
         try
         {
             await _context.SaveChangesAsync();
-            StatusMessage = $"Department '{Department.DepartmentName}' updated successfully.";
+            StatusMessage = $"Departamento '{Department.DepartmentName}' actualizado correctamente.";
         }
         catch (DbUpdateConcurrencyException)
         {

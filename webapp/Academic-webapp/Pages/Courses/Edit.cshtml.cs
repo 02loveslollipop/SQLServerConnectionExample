@@ -59,7 +59,7 @@ public class EditModel : PageModel
         try
         {
             await _context.SaveChangesAsync();
-            StatusMessage = $"Course '{Course.CourseName}' updated successfully.";
+            StatusMessage = $"Curso '{Course.CourseName}' actualizado correctamente.";
         }
         catch (DbUpdateConcurrencyException)
         {

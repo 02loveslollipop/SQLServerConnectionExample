@@ -1,10 +1,10 @@
 @page
 @model Academic_webapp.Pages.Enrollments.IndexModel
 @{
-    ViewData["Title"] = "Enrollments";
+    ViewData["Title"] = "Inscripciones";
 }
 
-<h1 class="display-6">Enrollments</h1>
+<h1 class="display-6">Inscripciones</h1>
 
 @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
 {
@@ -12,16 +12,16 @@
 }
 
 <p>
-    <a class="btn btn-primary" asp-page="Create">Add Enrollment</a>
+    <a class="btn btn-primary" asp-page="Create">Agregar inscripción</a>
 </p>
 
 <table class="table table-striped table-bordered align-middle">
     <thead class="table-light">
         <tr>
-            <th>Student</th>
-            <th>Course</th>
-            <th>Instructor</th>
-            <th>Date</th>
+            <th>Estudiante</th>
+            <th>Curso</th>
+            <th>Docente</th>
+            <th>Fecha</th>
             <th></th>
         </tr>
     </thead>
@@ -34,8 +34,8 @@
             <td>@item.Course?.Instructor?.InstructorName</td>
             <td>@item.EnrollmentDate.ToString("yyyy-MM-dd")</td>
             <td class="text-end">
-                <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.EnrollmentID">Edit</a>
-                <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.EnrollmentID">Delete</a>
+                <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.EnrollmentID">Editar</a>
+                <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.EnrollmentID">Eliminar</a>
             </td>
         </tr>
 }

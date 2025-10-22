@@ -1,25 +1,25 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Enrollments.DeleteModel
 @{
-    ViewData["Title"] = "Delete Enrollment";
+    ViewData["Title"] = "Eliminar inscripción";
 }
 
-<h1 class="display-6 text-danger">Delete Enrollment</h1>
+<h1 class="display-6 text-danger">Eliminar inscripción</h1>
 
-<h5>Are you sure you want to delete this enrollment?</h5>
+<h5>¿Seguro que deseas eliminar esta inscripción?</h5>
 <dl class="row mt-3">
-    <dt class="col-sm-3">Student</dt>
+    <dt class="col-sm-3">Estudiante</dt>
     <dd class="col-sm-9">@Model.Enrollment.Student?.FullName</dd>
-    <dt class="col-sm-3">Course</dt>
+    <dt class="col-sm-3">Curso</dt>
     <dd class="col-sm-9">@Model.Enrollment.Course?.CourseName</dd>
-    <dt class="col-sm-3">Instructor</dt>
+    <dt class="col-sm-3">Docente</dt>
     <dd class="col-sm-9">@Model.Enrollment.Course?.Instructor?.InstructorName</dd>
-    <dt class="col-sm-3">Date</dt>
+    <dt class="col-sm-3">Fecha</dt>
     <dd class="col-sm-9">@Model.Enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</dd>
 </dl>
 
 <form method="post">
     <input type="hidden" asp-for="Enrollment.EnrollmentID" />
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
 </form>

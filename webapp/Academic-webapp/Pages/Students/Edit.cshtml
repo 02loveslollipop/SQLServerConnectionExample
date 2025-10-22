@@ -1,10 +1,10 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Students.EditModel
 @{
-    ViewData["Title"] = "Edit Student";
+    ViewData["Title"] = "Editar estudiante";
 }
 
-<h1 class="display-6">Edit Student</h1>
+<h1 class="display-6">Editar estudiante</h1>
 
 <form method="post" class="mt-4">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -24,13 +24,13 @@
     <div class="mt-3">
         <label asp-for="Student.MajorID" class="form-label"></label>
         <select asp-for="Student.MajorID" asp-items="Model.MajorOptions" class="form-select">
-            <option value="">-- Select Major --</option>
+            <option value="">-- Selecciona una carrera --</option>
         </select>
         <span asp-validation-for="Student.MajorID" class="text-danger"></span>
     </div>
     <div class="mt-4">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
 

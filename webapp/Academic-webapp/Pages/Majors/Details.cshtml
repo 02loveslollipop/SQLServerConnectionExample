@@ -1,20 +1,20 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Majors.DetailsModel
 @{
-    ViewData["Title"] = "Major Details";
+    ViewData["Title"] = "Detalle de carrera";
 }
 
-<h1 class="display-6">Major Details</h1>
+<h1 class="display-6">Detalle de carrera</h1>
 
 <dl class="row mt-4">
-    <dt class="col-sm-2">Name</dt>
+    <dt class="col-sm-2">Nombre</dt>
     <dd class="col-sm-10">@Model.Major.MajorName</dd>
-    <dt class="col-sm-2">Department</dt>
+    <dt class="col-sm-2">Departamento</dt>
     <dd class="col-sm-10">@Model.Major.Department?.DepartmentName</dd>
 </dl>
 
 <section class="mt-4">
-    <h5>Students</h5>
+    <h5>Estudiantes</h5>
     @if (Model.Major.Students.Any())
     {
         <ul>
@@ -26,11 +26,11 @@
     }
     else
     {
-        <p class="text-muted">No students assigned to this major.</p>
+        <p class="text-muted">Sin estudiantes asignados a esta carrera.</p>
     }
 </section>
 
 <p class="mt-4">
-    <a asp-page="Edit" asp-route-id="@Model.Major.MajorID" class="btn btn-primary">Edit</a>
-    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-page="Edit" asp-route-id="@Model.Major.MajorID" class="btn btn-primary">Editar</a>
+    <a asp-page="Index" class="btn btn-secondary">Volver</a>
 </p>

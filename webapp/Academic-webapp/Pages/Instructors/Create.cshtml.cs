@@ -41,7 +41,7 @@ public class CreateModel : PageModel
         _context.Instructors.Add(Instructor);
         await _context.SaveChangesAsync();
 
-        StatusMessage = $"Instructor '{Instructor.InstructorName}' created successfully.";
+    StatusMessage = $"Docente '{Instructor.InstructorName}' creado correctamente.";
         return RedirectToPage("Index");
     }
 

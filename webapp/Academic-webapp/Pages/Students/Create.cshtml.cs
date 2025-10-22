@@ -41,7 +41,7 @@ public class CreateModel : PageModel
         _context.Students.Add(Student);
         await _context.SaveChangesAsync();
 
-        StatusMessage = $"Student '{Student.FullName}' created successfully.";
+    StatusMessage = $"Estudiante '{Student.FullName}' registrado correctamente.";
         return RedirectToPage("Index");
     }
 

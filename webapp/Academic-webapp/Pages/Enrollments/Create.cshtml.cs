@@ -38,7 +38,7 @@ public class CreateModel : PageModel
 
         if (normalizedDate > DateTime.UtcNow.Date)
         {
-            ModelState.AddModelError("Enrollment.EnrollmentDate", "Enrollment date cannot be in the future.");
+            ModelState.AddModelError("Enrollment.EnrollmentDate", "La fecha de inscripcion no puede ser futura.");
         }
 
         if (!ModelState.IsValid)
@@ -51,7 +51,7 @@ public class CreateModel : PageModel
         _context.Enrollments.Add(Enrollment);
         await _context.SaveChangesAsync();
 
-        StatusMessage = "Enrollment created successfully.";
+    StatusMessage = "Inscripcion creada correctamente.";
         return RedirectToPage("Index");
     }
 

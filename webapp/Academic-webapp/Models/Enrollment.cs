@@ -10,16 +10,16 @@ public class Enrollment
     [Key]
     public int EnrollmentID { get; set; }
 
-    [Display(Name = "Student")]
-    [Range(1, int.MaxValue, ErrorMessage = "Select a student.")]
+    [Display(Name = "Estudiante")]
+    [Range(1, int.MaxValue, ErrorMessage = "Seleccione un estudiante.")]
     public int StudentID { get; set; }
 
-    [Display(Name = "Course")]
-    [Range(1, int.MaxValue, ErrorMessage = "Select a course.")]
+    [Display(Name = "Curso")]
+    [Range(1, int.MaxValue, ErrorMessage = "Seleccione un curso.")]
     public int CourseID { get; set; }
 
     [DataType(DataType.Date)]
-    [Display(Name = "Enrollment Date")]
+    [Display(Name = "Fecha de inscripción")]
     public DateTime EnrollmentDate { get; set; } = DateTime.UtcNow;
 
     public Student? Student { get; set; }

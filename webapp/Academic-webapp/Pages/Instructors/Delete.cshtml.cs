@@ -43,7 +43,7 @@ public class DeleteModel : PageModel
         Instructor = instructor;
         if (saveChangesError == true)
         {
-            ErrorMessage = "Unable to delete instructor because it is referenced by other records.";
+            ErrorMessage = "No se puede eliminar el docente porque esta referenciado por otros registros.";
         }
 
         return Page();
@@ -66,7 +66,7 @@ public class DeleteModel : PageModel
         {
             _context.Instructors.Remove(instructor);
             await _context.SaveChangesAsync();
-            StatusMessage = $"Instructor '{instructor.InstructorName}' deleted successfully.";
+            StatusMessage = $"Docente '{instructor.InstructorName}' eliminado correctamente.";
             return RedirectToPage("Index");
         }
         catch (DbUpdateException)

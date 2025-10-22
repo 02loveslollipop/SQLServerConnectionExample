@@ -59,7 +59,7 @@ public class EditModel : PageModel
         try
         {
             await _context.SaveChangesAsync();
-            StatusMessage = $"Major '{Major.MajorName}' updated successfully.";
+            StatusMessage = $"Carrera '{Major.MajorName}' actualizada correctamente.";
         }
         catch (DbUpdateConcurrencyException)
         {

@@ -54,7 +54,7 @@ public class EditModel : PageModel
 
         if (normalizedDate > DateTime.UtcNow.Date)
         {
-            ModelState.AddModelError("Enrollment.EnrollmentDate", "Enrollment date cannot be in the future.");
+            ModelState.AddModelError("Enrollment.EnrollmentDate", "La fecha de inscripcion no puede ser futura.");
         }
 
         if (!ModelState.IsValid)
@@ -69,7 +69,7 @@ public class EditModel : PageModel
         try
         {
             await _context.SaveChangesAsync();
-            StatusMessage = "Enrollment updated successfully.";
+            StatusMessage = "Inscripcion actualizada correctamente.";
         }
         catch (DbUpdateConcurrencyException)
         {

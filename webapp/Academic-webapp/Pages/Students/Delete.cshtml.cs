@@ -21,7 +21,9 @@ public class DeleteModel : PageModel
     [TempData]
     public string? StatusMessage { get; set; }
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public string? ErrorMessage { get; private set; }
+
+    public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = null)
     {
         if (id is null)
         {
@@ -40,6 +42,10 @@ public class DeleteModel : PageModel
         }
 
         Student = student;
+        if (saveChangesError == true)
+        {
+            ErrorMessage = "No se puede eliminar el estudiante porque tiene registros relacionados (por ejemplo, inscripciones).";
+        }
         return Page();
     }
 
@@ -56,10 +62,16 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        _context.Students.Remove(student);
-        await _context.SaveChangesAsync();
-        StatusMessage = $"Student '{student.FirstName} {student.LastName}' deleted successfully.";
-
-        return RedirectToPage("Index");
+        try
+        {
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+            StatusMessage = $"Estudiante '{student.FirstName} {student.LastName}' eliminado correctamente.";
+            return RedirectToPage("Index");
+        }
+        catch (DbUpdateException)
+        {
+            return RedirectToPage(new { id, saveChangesError = true });
+        }
     }
 }

@@ -1,10 +1,10 @@
 @page "{id:int}"
 @model Academic_webapp.Pages.Enrollments.EditModel
 @{
-    ViewData["Title"] = "Edit Enrollment";
+    ViewData["Title"] = "Editar inscripción";
 }
 
-<h1 class="display-6">Edit Enrollment</h1>
+<h1 class="display-6">Editar inscripción</h1>
 
 <form method="post" class="mt-4">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -13,14 +13,14 @@
         <div class="col-md-6">
             <label asp-for="Enrollment.StudentID" class="form-label"></label>
             <select asp-for="Enrollment.StudentID" asp-items="Model.StudentOptions" class="form-select">
-                <option value="">-- Select Student --</option>
+                <option value="">-- Selecciona un estudiante --</option>
             </select>
             <span asp-validation-for="Enrollment.StudentID" class="text-danger"></span>
         </div>
         <div class="col-md-6">
             <label asp-for="Enrollment.CourseID" class="form-label"></label>
             <select asp-for="Enrollment.CourseID" asp-items="Model.CourseOptions" class="form-select">
-                <option value="">-- Select Course --</option>
+                <option value="">-- Selecciona un curso --</option>
             </select>
             <span asp-validation-for="Enrollment.CourseID" class="text-danger"></span>
         </div>
@@ -31,8 +31,8 @@
         <span asp-validation-for="Enrollment.EnrollmentDate" class="text-danger"></span>
     </div>
     <div class="mt-4">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
 

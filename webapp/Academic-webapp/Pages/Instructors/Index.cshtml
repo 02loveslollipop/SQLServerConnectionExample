@@ -1,10 +1,10 @@
 @page
 @model Academic_webapp.Pages.Instructors.IndexModel
 @{
-    ViewData["Title"] = "Instructors";
+    ViewData["Title"] = "Docentes";
 }
 
-<h1 class="display-6">Instructors</h1>
+<h1 class="display-6">Docentes</h1>
 
 @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
 {
@@ -12,14 +12,14 @@
 }
 
 <p>
-    <a class="btn btn-primary" asp-page="Create">Create New Instructor</a>
+    <a class="btn btn-primary" asp-page="Create">Agregar docente</a>
 </p>
 
 <table class="table table-striped table-bordered align-middle">
     <thead class="table-light">
         <tr>
-            <th>Name</th>
-            <th>Department</th>
+            <th>Nombre</th>
+            <th>Departamento</th>
             <th></th>
         </tr>
     </thead>
@@ -30,9 +30,9 @@
             <td>@item.InstructorName</td>
             <td>@item.Department?.DepartmentName</td>
             <td class="text-end">
-                <a class="btn btn-outline-secondary btn-sm" asp-page="Details" asp-route-id="@item.InstructorID">Details</a>
-                <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.InstructorID">Edit</a>
-                <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.InstructorID">Delete</a>
+                <a class="btn btn-outline-secondary btn-sm" asp-page="Details" asp-route-id="@item.InstructorID">Detalles</a>
+                <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.InstructorID">Editar</a>
+                <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.InstructorID">Eliminar</a>
             </td>
         </tr>
 }

@@ -43,7 +43,7 @@ public class DeleteModel : PageModel
         Course = course;
         if (saveChangesError == true)
         {
-            ErrorMessage = "Unable to delete course because it is referenced by other records.";
+            ErrorMessage = "No se puede eliminar el curso porque esta referenciado por otros registros.";
         }
 
         return Page();
@@ -66,7 +66,7 @@ public class DeleteModel : PageModel
         {
             _context.Courses.Remove(course);
             await _context.SaveChangesAsync();
-            StatusMessage = $"Course '{course.CourseName}' deleted successfully.";
+            StatusMessage = $"Curso '{course.CourseName}' eliminado correctamente.";
             return RedirectToPage("Index");
         }
         catch (DbUpdateException)
