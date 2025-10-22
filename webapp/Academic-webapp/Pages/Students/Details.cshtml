@@ -1,0 +1,51 @@
+@page "{id:int}"
+@model Academic_webapp.Pages.Students.DetailsModel
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1 class="display-6">Student Details</h1>
+
+<dl class="row mt-4">
+    <dt class="col-sm-2">Student</dt>
+    <dd class="col-sm-10">@Model.Student.FullName</dd>
+    <dt class="col-sm-2">Major</dt>
+    <dd class="col-sm-10">@Model.Student.Major?.MajorName</dd>
+    <dt class="col-sm-2">Department</dt>
+    <dd class="col-sm-10">@Model.Student.Major?.Department?.DepartmentName</dd>
+</dl>
+
+<section class="mt-4">
+    <h5>Enrollments</h5>
+    @if (Model.Student.Enrollments.Any())
+    {
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Credits</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var enrollment in Model.Student.Enrollments.OrderByDescending(e => e.EnrollmentDate))
+            {
+                <tr>
+                    <td>@enrollment.Course?.CourseName</td>
+                    <td>@enrollment.Course?.Credits</td>
+                    <td>@enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No enrollments found.</p>
+    }
+</section>
+
+<p class="mt-4">
+    <a asp-page="Edit" asp-route-id="@Model.Student.StudentID" class="btn btn-primary">Edit</a>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+</p>

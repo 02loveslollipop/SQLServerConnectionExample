@@ -1,0 +1,30 @@
+@page "{id:int}"
+@model Academic_webapp.Pages.Majors.EditModel
+@{
+    ViewData["Title"] = "Edit Major";
+}
+
+<h1 class="display-6">Edit Major</h1>
+
+<form method="post" class="mt-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Major.MajorID" />
+    <div class="mb-3">
+        <label asp-for="Major.MajorName" class="form-label"></label>
+        <input asp-for="Major.MajorName" class="form-control" />
+        <span asp-validation-for="Major.MajorName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Major.DepartmentID" class="form-label"></label>
+        <select asp-for="Major.DepartmentID" asp-items="Model.DepartmentOptions" class="form-select">
+            <option value="">-- Select Department --</option>
+        </select>
+        <span asp-validation-for="Major.DepartmentID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

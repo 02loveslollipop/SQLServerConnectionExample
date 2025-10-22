@@ -1,0 +1,51 @@
+@page "{id:int}"
+@model Academic_webapp.Pages.Departments.DetailsModel
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h1 class="display-6">Department Details</h1>
+
+<dl class="row mt-4">
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.Department.DepartmentName</dd>
+</dl>
+
+<section class="mt-4">
+    <h5>Majors</h5>
+    @if (Model.Department.Majors.Any())
+    {
+        <ul>
+        @foreach (var major in Model.Department.Majors.OrderBy(m => m.MajorName))
+        {
+            <li>@major.MajorName</li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No majors assigned yet.</p>
+    }
+</section>
+
+<section class="mt-4">
+    <h5>Instructors</h5>
+    @if (Model.Department.Instructors.Any())
+    {
+        <ul>
+        @foreach (var instructor in Model.Department.Instructors.OrderBy(i => i.InstructorName))
+        {
+            <li>@instructor.InstructorName</li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No instructors assigned yet.</p>
+    }
+</section>
+
+<p class="mt-4">
+    <a asp-page="Edit" asp-route-id="@Model.Department.DepartmentID" class="btn btn-primary">Edit</a>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+</p>

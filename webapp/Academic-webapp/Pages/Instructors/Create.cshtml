@@ -1,0 +1,29 @@
+@page
+@model Academic_webapp.Pages.Instructors.CreateModel
+@{
+    ViewData["Title"] = "Create Instructor";
+}
+
+<h1 class="display-6">Create Instructor</h1>
+
+<form method="post" class="mt-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Instructor.InstructorName" class="form-label"></label>
+        <input asp-for="Instructor.InstructorName" class="form-control" />
+        <span asp-validation-for="Instructor.InstructorName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Instructor.DepartmentID" class="form-label"></label>
+        <select asp-for="Instructor.DepartmentID" asp-items="Model.DepartmentOptions" class="form-select">
+            <option value="">-- Select Department --</option>
+        </select>
+        <span asp-validation-for="Instructor.DepartmentID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

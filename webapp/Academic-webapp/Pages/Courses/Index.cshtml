@@ -1,0 +1,42 @@
+@page
+@model Academic_webapp.Pages.Courses.IndexModel
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h1 class="display-6">Courses</h1>
+
+@if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+{
+    <div class="alert alert-success">@Model.StatusMessage</div>
+}
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create Course</a>
+</p>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
+        <tr>
+            <th>Course</th>
+            <th>Credits</th>
+            <th>Instructor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Courses)
+{
+        <tr>
+            <td>@item.CourseName</td>
+            <td>@item.Credits</td>
+            <td>@item.Instructor?.InstructorName</td>
+            <td class="text-end">
+                <a class="btn btn-outline-secondary btn-sm" asp-page="Details" asp-route-id="@item.CourseID">Details</a>
+                <a class="btn btn-outline-primary btn-sm" asp-page="Edit" asp-route-id="@item.CourseID">Edit</a>
+                <a class="btn btn-outline-danger btn-sm" asp-page="Delete" asp-route-id="@item.CourseID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

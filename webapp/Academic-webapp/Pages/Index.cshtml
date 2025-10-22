@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Academic Administration</h1>
+    <p class="lead">Manage departments, majors, instructors, students, courses, and enrollments in a unified dashboard.</p>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Academic Structure</h5>
+                <p class="card-text">Organize departments, majors, and instructors.</p>
+                <a class="btn btn-outline-primary" asp-page="/Departments/Index">Departments</a>
+                <a class="btn btn-outline-primary mt-2" asp-page="/Majors/Index">Majors</a>
+                <a class="btn btn-outline-primary mt-2" asp-page="/Instructors/Index">Instructors</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text">Capture student records and program assignments.</p>
+                <a class="btn btn-outline-primary" asp-page="/Students/Index">Students</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Courses &amp; Enrollments</h5>
+                <p class="card-text">Maintain curriculum and track student participation.</p>
+                <a class="btn btn-outline-primary" asp-page="/Courses/Index">Courses</a>
+                <a class="btn btn-outline-primary mt-2" asp-page="/Enrollments/Index">Enrollments</a>
+            </div>
+        </div>
+    </div>
+</div>

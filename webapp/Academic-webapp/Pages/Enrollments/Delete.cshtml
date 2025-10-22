@@ -1,0 +1,25 @@
+@page "{id:int}"
+@model Academic_webapp.Pages.Enrollments.DeleteModel
+@{
+    ViewData["Title"] = "Delete Enrollment";
+}
+
+<h1 class="display-6 text-danger">Delete Enrollment</h1>
+
+<h5>Are you sure you want to delete this enrollment?</h5>
+<dl class="row mt-3">
+    <dt class="col-sm-3">Student</dt>
+    <dd class="col-sm-9">@Model.Enrollment.Student?.FullName</dd>
+    <dt class="col-sm-3">Course</dt>
+    <dd class="col-sm-9">@Model.Enrollment.Course?.CourseName</dd>
+    <dt class="col-sm-3">Instructor</dt>
+    <dd class="col-sm-9">@Model.Enrollment.Course?.Instructor?.InstructorName</dd>
+    <dt class="col-sm-3">Date</dt>
+    <dd class="col-sm-9">@Model.Enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Enrollment.EnrollmentID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

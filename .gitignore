@@ -1,0 +1,18 @@
+# Build output
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# IDE cache
+.vs/
+
+# Logs and generated data
+*.log
+*.tmp
+webapp/Academic-webapp/appsettings.Development.json
+webapp/Academic-webapp/appsettings.json

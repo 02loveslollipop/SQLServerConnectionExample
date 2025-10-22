@@ -1,0 +1,38 @@
+@page
+@model Academic_webapp.Pages.Students.CreateModel
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<h1 class="display-6">Add Student</h1>
+
+<form method="post" class="mt-4">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Student.FirstName" class="form-label"></label>
+            <input asp-for="Student.FirstName" class="form-control" />
+            <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Student.LastName" class="form-label"></label>
+            <input asp-for="Student.LastName" class="form-control" />
+            <span asp-validation-for="Student.LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-3">
+        <label asp-for="Student.MajorID" class="form-label"></label>
+        <select asp-for="Student.MajorID" asp-items="Model.MajorOptions" class="form-select">
+            <option value="">-- Select Major --</option>
+        </select>
+        <span asp-validation-for="Student.MajorID" class="text-danger"></span>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
