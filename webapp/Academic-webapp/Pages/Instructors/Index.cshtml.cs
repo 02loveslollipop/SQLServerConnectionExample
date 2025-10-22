@@ -17,15 +17,54 @@ public class IndexModel : PageModel
 
     public IList<Instructor> Instructors { get; private set; } = new List<Instructor>();
 
+    private const int PageSize = 100;
+
+    public int CurrentPage { get; private set; }
+    public int TotalPages { get; private set; }
+    public int TotalCount { get; private set; }
+    public int DisplayFrom { get; private set; }
+    public int DisplayTo { get; private set; }
+    public bool HasPreviousPage => CurrentPage > 1;
+    public bool HasNextPage => CurrentPage < TotalPages;
+
     [TempData]
     public string? StatusMessage { get; set; }
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(int pageNumber = 1)
     {
-        Instructors = await _context.Instructors
+        var query = _context.Instructors
             .AsNoTracking()
             .Include(i => i.Department)
-            .OrderBy(i => i.InstructorName)
+            .OrderBy(i => i.InstructorName);
+
+        TotalCount = await query.CountAsync();
+        TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+        if (TotalPages == 0)
+        {
+            TotalPages = 1;
+        }
+
+        CurrentPage = pageNumber < 1 ? 1 : pageNumber;
+        if (CurrentPage > TotalPages)
+        {
+            CurrentPage = TotalPages;
+        }
+        var skip = (CurrentPage - 1) * PageSize;
+
+        Instructors = await query
+            .Skip(skip)
+            .Take(PageSize)
             .ToListAsync();
+
+        if (TotalCount == 0)
+        {
+            DisplayFrom = 0;
+            DisplayTo = 0;
+        }
+        else
+        {
+            DisplayFrom = skip + 1;
+            DisplayTo = skip + Instructors.Count;
+        }
     }
 }
